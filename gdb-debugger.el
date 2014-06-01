@@ -28,7 +28,9 @@
                 (if (setq match (and (file-exists-p in)
                                      (file-regular-p in)
                                      (file-executable-p in)))
-                    (setq in-file in))))
+                    (setq in-file in)
+                  (message "Select executable file.")
+                  (run-with-idle-timer 2))))
             in-file))))
     (--prepend-or-pop file-name)))
 
