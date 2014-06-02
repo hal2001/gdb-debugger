@@ -1,5 +1,4 @@
 (require 'dash)
-(require 'dash)
 
 (defvar gdb-debugger-executable-list nil)
 
@@ -50,12 +49,17 @@
       (message "gdb-debugger: %s is already bound." k)
     (global-set-key k 'gdb-debugger-debug)))
 
-(let ((k (kbd "C-<f5>")))
+(let ((k (kbd "C-x <f5>")))
   (if (key-binding k)
       (message "gdb-debugger: %s is already bound." k)
     (global-set-key k (lambda ()
                         (interactive)
                         (gdb-debugger-add-executable)
                         (gdb-debugger-debug)))))
+
+(let ((k (kbd "C-x <f9>")))
+  (if (key-binding k)
+      (message "gdb-debugger: %s is already bound." k)
+    (global-set-key k 'gud-break)))
 
 (provide 'gdb-debugger)
